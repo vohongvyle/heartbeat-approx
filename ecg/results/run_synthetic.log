@@ -1,0 +1,56 @@
+synthetic: train 6240 / val 2340 / test 3900 beats; test classes {'N': 2977, 'S': 303, 'V': 509, 'F': 111}
+float test acc 0.9892 | 8-bit exact test acc 0.9895, Se S 0.917, Se V 1.000
+  mul8u_1JFF  E=1.000  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_Y48   E=0.998  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_1446  E=0.994  acc 0.9892  Se S 0.917  Se V 1.000   | comp: acc 0.9890  Se S 0.917
+  mul8u_2P7   E=0.989  acc 0.9897  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_125K  E=0.985  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_LM7   E=0.976  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_JQQ   E=0.957  acc 0.9887  Se S 0.911  Se V 1.000   | comp: acc 0.9890  Se S 0.917
+  mul8u_KEM   E=0.955  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_14VP  E=0.942  acc 0.9892  Se S 0.914  Se V 1.000   | comp: acc 0.9897  Se S 0.917
+  mul8u_150Q  E=0.933  acc 0.9892  Se S 0.917  Se V 1.000   | comp: acc 0.9892  Se S 0.917
+  mul8u_GS2   E=0.924  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9897  Se S 0.917
+  mul8u_CK5   E=0.901  acc 0.9897  Se S 0.917  Se V 1.000   | comp: acc 0.9897  Se S 0.917
+  mul8u_QJD   E=0.898  acc 0.9895  Se S 0.917  Se V 1.000   | comp: acc 0.9897  Se S 0.917
+  mul8u_7C1   E=0.866  acc 0.9892  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.917
+  mul8u_2AC   E=0.827  acc 0.9895  Se S 0.911  Se V 1.000   | comp: acc 0.9897  Se S 0.914
+  mul8u_RCG   E=0.823  acc 0.9897  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.914
+  mul8u_ZFB   E=0.812  acc 0.9892  Se S 0.921  Se V 1.000   | comp: acc 0.9903  Se S 0.921
+  mul8u_2HH   E=0.808  acc 0.9892  Se S 0.911  Se V 1.000   | comp: acc 0.9895  Se S 0.914
+  mul8u_NGR   E=0.752  acc 0.9892  Se S 0.921  Se V 1.000   | comp: acc 0.9897  Se S 0.917
+  mul8u_1CMB  E=0.667  acc 0.9892  Se S 0.917  Se V 1.000   | comp: acc 0.9895  Se S 0.921
+  mul8u_185Q  E=0.600  acc 0.9892  Se S 0.931  Se V 1.000   | comp: acc 0.9890  Se S 0.914
+  mul8u_19DB  E=0.600  acc 0.9905  Se S 0.941  Se V 1.000   | comp: acc 0.9908  Se S 0.927
+  mul8u_DM1   E=0.577  acc 0.9890  Se S 0.914  Se V 1.000   | comp: acc 0.9890  Se S 0.914
+  mul8u_L40   E=0.564  acc 0.9818  Se S 0.927  Se V 0.941   | comp: acc 0.9738  Se S 0.921
+  mul8u_12N4  E=0.462  acc 0.9895  Se S 0.931  Se V 1.000   | comp: acc 0.9897  Se S 0.927
+  mul8u_17KS  E=0.380  acc 0.9795  Se S 0.951  Se V 0.996   | comp: acc 0.9797  Se S 0.904
+  mul8u_1AGV  E=0.361  acc 0.9772  Se S 0.947  Se V 0.986   | comp: acc 0.9762  Se S 0.888
+  mul8u_FTA   E=0.337  acc 0.9777  Se S 0.931  Se V 0.978   | comp: acc 0.9690  Se S 0.901
+  mul8u_YX7   E=0.287  acc 0.9846  Se S 0.921  Se V 0.988   | comp: acc 0.9436  Se S 0.861
+  mul8u_JV3   E=0.229  acc 0.8244  Se S 0.564  Se V 0.523   | comp: acc 0.8210  Se S 0.492
+  mul8u_18DU  E=0.223  acc 0.6549  Se S 0.828  Se V 0.967   | comp: acc 0.8928  Se S 0.673
+  mul8u_QKX   E=0.218  acc 0.9451  Se S 0.970  Se V 0.971   | comp: acc 0.8862  Se S 0.772
+  mul8u_13QR  E=0.174  acc 0.7679  Se S 0.330  Se V 0.890   | comp: acc 0.8305  Se S 0.264
+  mul8u_17C8  E=0.160  acc 0.1936  Se S 0.640  Se V 0.670   | comp: acc 0.6292  Se S 0.307
+  mul8u_17QU  E=0.159  acc 0.3138  Se S 0.644  Se V 0.756   | comp: acc 0.6526  Se S 0.218
+  mul8u_E9R   E=0.155  acc 0.7633  Se S 0.000  Se V 0.000   | comp: acc 0.7633  Se S 0.000
+  search[accuracy]: energy 0.287  test acc 0.9851  Se S 0.908  Se V 0.988  missed abnormal 32
+  search[clinical]: energy 0.287  test acc 0.9879  Se S 0.917  Se V 0.994  missed abnormal 28
+  gated fallback (cheap = accuracy-search config; re-check low-confidence normal calls):
+    tau 0.0   rerun 0.000  energy 0.287  Se S 0.908  missed 32
+    tau 0.5   rerun 0.000  energy 0.287  Se S 0.908  missed 32
+    tau 0.7   rerun 0.006  energy 0.293  Se S 0.924  missed 25
+    tau 0.8   rerun 0.010  energy 0.297  Se S 0.927  missed 24
+    tau 0.9   rerun 0.019  energy 0.306  Se S 0.931  missed 23
+    tau 0.95  rerun 0.032  energy 0.319  Se S 0.931  missed 23
+    tau 0.99  rerun 0.131  energy 0.418  Se S 0.937  missed 21
+    tau 0.999 rerun 0.475  energy 0.762  Se S 0.937  missed 21
+    tau 1.01  rerun 0.770  energy 1.057  Se S 0.937  missed 21
+
+  Battery life gain if inference is a share f of the device's power (assumption):
+    accuracy search  f=10%: +8%  f=30%: +27%  f=50%: +55%
+    clinical search  f=10%: +8%  f=30%: +27%  f=50%: +55%
+
+Done in 330 s. Results in /home/claude/approx_ml/ecg/results/

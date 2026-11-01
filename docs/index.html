@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Arrhythmia Approximation Lab</title>
+<meta name="description" content="Which heartbeats does approximate computing cost a wearable heart monitor? An interactive lab running an 8-bit heartbeat classifier in the browser.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow" id="eyebrow">1D CNN · 8‑bit · EvoApproxLib multipliers · heartbeats from unseen patients</div>
+    <h1>Arrhythmia <em>Approximation</em> Lab</h1>
+    <p class="lede">Choose an approximate multiplier for each layer of a wearable heart‑rhythm classifier and see what the energy saving costs in missed abnormal beats. Every number is computed live in your browser by running the 8‑bit network on every test beat.</p>
+  </header>
+  <section class="panel compare" aria-label="How this project differs from the group project">
+    <div class="compare-col">
+      <span class="eyebrow">Group project · CECS 530</span>
+      <h2>How much energy can approximation save?</h2>
+      <p>36 approximate multipliers in a small network on handwritten digits. Judged by overall accuracy: one multiplier saved about 75% of multiplier energy with no accuracy loss.</p>
+      <a href="https://github.com/vohongvyle/approx-computing-ml">approx-computing-ml</a>
+    </div>
+    <div class="compare-col this">
+      <span class="eyebrow">This project · my extension</span>
+      <h2>Which heartbeats does the saving cost?</h2>
+      <p>The same multipliers in a wearable heartbeat classifier, tested on unseen patients. Judged by abnormal beats missed, with a clinically constrained search and a safety net that never overrules an alarm.</p>
+      <a href="https://github.com/vohongvyle/heartbeat-approx-research">heartbeat-approx-research</a>
+    </div>
+  </section>
+  <div class="banner" id="banner"><b>Synthetic data</b><span>These heartbeats are simulated to test the pipeline. Treat the numbers as a demo, not a clinical result. Run <code>export_web.py --data mitbih</code> to rebuild this page on MIT‑BIH.</span></div>
+
+  <section class="panel" aria-label="Multiplier per layer">
+    <div class="head"><h2>Multipliers</h2>
+      <div class="chips" id="presets"></div></div>
+    <div class="layers" id="layers"></div>
+  </section>
+
+  <section class="vitals" id="vitals" aria-live="polite">
+    <div class="vital energy"><span class="eyebrow">Energy / beat</span><span class="v" id="vE">–</span><span class="d" id="dE">of exact, multiplier + adder</span></div>
+    <div class="vital"><span class="eyebrow">Accuracy</span><span class="v" id="vAcc">–</span><span class="d" id="dAcc">–</span></div>
+    <div class="vital" id="tS"><span class="eyebrow">Sensitivity S</span><span class="v" id="vS">–</span><span class="d" id="dS">–</span></div>
+    <div class="vital" id="tV"><span class="eyebrow">Sensitivity V</span><span class="v" id="vV">–</span><span class="d" id="dV">–</span></div>
+    <div class="vital" id="tF"><span class="eyebrow">Sensitivity F</span><span class="v" id="vF">–</span><span class="d" id="dF">–</span></div>
+    <div class="vital" id="tM"><span class="eyebrow">Missed abnormal</span><span class="v" id="vM">–</span><span class="d" id="dM">–</span></div>
+  </section>
+
+  <div class="two">
+    <section class="panel">
+      <div class="head"><h2>Look at a beat</h2>
+        <div class="chips"><button class="chip" id="bMiss">Missed by approximation</button><button class="chip" id="bAb">Random abnormal</button><button class="chip" id="bAny">Random beat</button></div></div>
+      <svg class="paper" id="paper" viewBox="0 0 640 300" role="img" aria-label="Heartbeat on ECG paper"></svg>
+      <div class="calls">
+        <div class="call truth"><span>Cardiologist label</span><b id="cT">–</b></div>
+        <div class="call ex"><span>Exact chip</span><b id="cE">–</b></div>
+        <div class="call ap" id="cAw"><span>Your chip</span><b id="cA">–</b></div>
+      </div>
+      <p class="note" id="beatNote">–</p>
+    </section>
+
+    <section class="panel">
+      <div class="head"><h2>Where the calls go</h2><span class="note">rows: true class · columns: predicted</span></div>
+      <div class="cm" id="cm"></div>
+      <p class="note">Big number: your configuration. Small number: change from the exact chip. Red outline: abnormal beats called normal.</p>
+    </section>
+  </div>
+
+  <div class="two">
+    <section class="panel">
+      <div class="head"><h2>Safety net</h2><span class="note">re‑check unsure “normal” calls on the exact chip</span></div>
+      <div class="slider">
+        <label for="tau" class="note">Re‑check a “normal” call when the model's confidence is below <b class="mono" id="tauV">0.90</b></label>
+        <input type="range" id="tau" min="0" max="8" step="1" value="4">
+      </div>
+      <div class="nets">
+        <div><b id="nR">–</b><span>beats re‑checked</span></div>
+        <div><b id="nE">–</b><span>energy, incl. re‑checks</span></div>
+        <div><b id="nM">–</b><span>missed abnormal <span class="mono" id="nM0"></span></span></div>
+      </div>
+      <div class="chart-box"><svg id="netChart" viewBox="0 0 520 220" style="width:100%;height:auto;display:block"></svg></div>
+      <p class="note">Abnormal flags from your chip are always kept. The exact chip only gets a second look at beats your chip called normal without much confidence. The dashed line is the exact chip on its own.</p>
+    </section>
+
+    <section class="panel">
+      <div class="head"><h2>Accuracy hides the misses</h2></div>
+      <div class="legend"><span><i style="background:var(--muted)"></i>Accuracy</span><span><i style="background:var(--approx)"></i>Sensitivity S</span><span><i style="background:var(--exact)"></i>Sensitivity V</span><span><i style="border:2px solid var(--ink);background:transparent"></i>You</span></div>
+      <div class="chart-box"><svg id="sweep" viewBox="0 0 520 300" style="width:100%;height:auto;display:block" role="img" aria-label="Accuracy and sensitivity against energy for each circuit used in every layer"></svg><div class="tip" id="tip" hidden></div></div>
+      <p class="note">Each column of dots is one circuit used in all four layers. Accuracy stays high while sensitivity for rare abnormal beats can drop sharply.</p>
+    </section>
+  </div>
+
+  <details open>
+    <summary>How this works</summary>
+    <div class="how">
+      <div><h3>The model</h3><p>A 1D CNN reads 0.7 s of ECG around each heartbeat plus two rhythm features (how early the beat came, how long the pause after it). It sorts beats into N normal, S supraventricular, V ventricular and F fusion, the AAMI classes.</p></div>
+      <div><h3>The chip</h3><p>Weights and activations are 8‑bit. Every one of the ~27,000 multiplications per beat is looked up in the table of the chosen EvoApproxLib circuit. Energy counts the multiplier plus an exact 16‑bit adder per operation, using 45 nm figures.</p></div>
+      <div><h3>Compensation</h3><p>Approximate multipliers lean low or high on average. Compensation measures that lean on training beats and folds it into each neuron's bias. It costs nothing in hardware, but it does not always help.</p></div>
+      <div><h3>Why sensitivity</h3><p>About 1 in 4 test beats is abnormal. Missing a ventricular beat matters more than a false alarm, so the page reports sensitivity per class and counts abnormal beats called normal.</p></div>
+    </div>
+  </details>
+</div>
+<script src="data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
