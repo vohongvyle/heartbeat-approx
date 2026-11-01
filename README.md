@@ -1,6 +1,6 @@
 ## Risk-Aware Approximate Computing for Wearable Heart Monitoring
 
-When a wearable heart monitor saves energy by using approximate arithmetic, which heartbeats might it miss? Overall accuracy can hide the answer because abnormal beats are rare. I built this project to measure that risk and try two ways to reduce it. This personal research project grew out of my CECS 530 group project on approximate computing, [approx-computing-ml](https://github.com/vohongvyle/energy-approxcomputing-cecs530). In that project, we compared designs using overall accuracy on handwritten digits. I wanted to see what that measure might hide in health monitoring: which heartbeats a wearable device could miss while saving energy. I wrote the project in NumPy so it can run on a laptop.
+I built this project to measure that risk and try two ways to reduce when a wearable heart monitor saves energy by using approximate arithmetic, which heartbeats might it miss and so overall accuracy can hide the answer because abnormal beats are rare. . This personal research project grew out of my CECS 530 group project on approximate computing, [approx-computing-ml](https://github.com/vohongvyle/energy-approxcomputing-cecs530). In that project, we compared designs using overall accuracy on handwritten digits. I wanted to see what that measure might hide in health monitoring: which heartbeats a wearable device could miss while saving energy. I wrote the project in NumPy so it can run on a laptop.
 
 ## About the code
 
