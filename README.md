@@ -2,10 +2,6 @@
 
 When a wearable heart monitor saves energy by using approximate arithmetic, which heartbeats might it miss? Overall accuracy can hide the answer because abnormal beats are rare. I built this project to measure that risk and try two ways to reduce it. This personal research project grew out of my CECS 530 group project on approximate computing, [approx-computing-ml](https://github.com/vohongvyle/energy-approxcomputing-cecs530). In that project, we compared designs using overall accuracy on handwritten digits. I wanted to see what that measure might hide in health monitoring: which heartbeats a wearable device could miss while saving energy. I wrote the project in NumPy so it can run on a laptop.
 
-![The interactive page: choose a multiplier per layer and see energy, accuracy and missed beats](docs/images/web_controls.png)
-
-*I also built an interactive page for the project. You can choose an approximate multiplier for each layer and run the 8-bit network on every test beat in your browser. The page reports energy, accuracy, sensitivity for each class, and the number of abnormal beats missed.*
-
 ## About the code
 
 The classifier sorts each heartbeat into one of four AAMI classes: N (normal), S (supraventricular), V (ventricular), or F (fusion). About three in four test beats are normal, so a design can miss many abnormal beats while its overall accuracy barely changes.
