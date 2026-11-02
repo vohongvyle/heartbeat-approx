@@ -5,7 +5,6 @@ I built this project to measure that risk and try two ways to reduce when a wear
 ### About the code
 
 The classifier sorts each heartbeat into one of four AAMI classes: N (normal), S (supraventricular), V (ventricular), or F (fusion). About three in four test beats are normal, so a design can miss many abnormal beats while its overall accuracy barely changes.
-
 ![Example heartbeats of each class](docs/images/synthetic_beats.png)
 - A small 1D CNN that classifies each beat using 0.7 seconds of ECG around the R peak, along with two rhythm features: how early the beat came and how long the pause after it was.
 - An 8-bit version of the network. For each beat, about 27,000 multiplications use a lookup table for one of 36 approximate multipliers from [EvoApproxLib](https://github.com/ehw-fit/evoapproxlib).
