@@ -1,8 +1,8 @@
-## Risk-Aware Approximate Computing for Heartbeat Monitoring
+### Risk-Aware Approximate Computing for Heartbeat Monitoring
 
 I built this project to measure that risk and try two ways to reduce when a wearable heart monitor saves energy by using approximate arithmetic, which heartbeats might it miss and so overall accuracy can hide the answer because abnormal beats are rare. . This personal research project grew out of my CECS 530 group project on approximate computing, [approx-computing-ml](https://github.com/vohongvyle/energy-approxcomputing-cecs530). In that project, we compared designs using overall accuracy on handwritten digits. I wanted to see what that measure might hide in health monitoring: which heartbeats a wearable device could miss while saving energy. I wrote the project in NumPy so it can run on a laptop.
 
-## About the code
+### About the code
 
 The classifier sorts each heartbeat into one of four AAMI classes: N (normal), S (supraventricular), V (ventricular), or F (fusion). About three in four test beats are normal, so a design can miss many abnormal beats while its overall accuracy barely changes.
 
@@ -21,13 +21,13 @@ I also added two ways to reduce risk:
 
 *On the left, a supraventricular beat that the exact multiplier classifies correctly is called normal by the approximate one. On the right, the chart shows where each test beat was classified. Red boxes mark abnormal beats called normal; the small numbers show the change from the exact design.*
 
-## Limitations
+### Limitations
 
 - So far, I have tested the pipeline on simulated beats, which are cleaner than real ECG data.
 - My energy estimate counts only the multiplier and accumulator adder, using 45 nm figures. It does not include memory, sensing, or radio energy.
 - I used one small CNN and applied approximation after training.
 
-## References
+### References
 
 - V. Mrazek et al., “EvoApprox8b: Library of approximate adders and multipliers for circuit design and benchmarking of approximation methods,” DATE 2017.
 - P. de Chazal, M. O'Dwyer, R. B. Reilly, “Automatic classification of heartbeats using ECG morphology and heartbeat interval features,” IEEE TBME, 2004.
