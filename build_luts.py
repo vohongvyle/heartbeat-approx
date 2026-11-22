@@ -12,7 +12,6 @@ Usage:
 import argparse, ctypes, json, os, subprocess, tempfile
 import numpy as np
 
-
 def find_circuits(meta, kind="8x8_unsigned"):
     """Collect unique circuits (name -> params, C path) from meta.json."""
     found = {}
@@ -36,7 +35,6 @@ def find_circuits(meta, kind="8x8_unsigned"):
     walk(meta)
     return found
 
-
 def build_lut(c_path, func_name, workdir):
     so = os.path.join(workdir, func_name + ".so")
     subprocess.run(["gcc", "-O2", "-shared", "-fPIC", c_path, "-o", so], check=True)
@@ -49,7 +47,6 @@ def build_lut(c_path, func_name, workdir):
         for b in range(256):
             lut[a, b] = f(a, b)
     return lut
-
 
 def main():
     ap = argparse.ArgumentParser()
@@ -76,7 +73,6 @@ def main():
 
     json.dump(info, open(os.path.join(args.out, "circuits.json"), "w"), indent=1)
     print(f"\n{len(info)} lookup tables written to {args.out}/")
-
 
 if __name__ == "__main__":
     main()
